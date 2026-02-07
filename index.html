@@ -4,38 +4,31 @@
   <meta charset="UTF-8">
   <title>For Rahini Arora 🤍</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <style>
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-<script>
-  function showLove() {
-    // Show the hidden love text
-    document.getElementById("loveText").style.display = "block";
-    
-    // Launch confetti
-    confetti({
-      particleCount: 100,
-      spread: 70,
-      origin: { y: 0.6 },
-      colors: ['#e11d48', '#f472b6', '#fbcfe8', '#ff49b6', '#ffe4f0']
-    });
-  }
-</script>
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(135deg, #fff1f4, #fce7f3);
+      overflow: hidden;
       display: flex;
       justify-content: center;
       align-items: center;
       min-height: 100vh;
+      background: linear-gradient(120deg, #ffd6e8, #fce7f3);
+      animation: gradientBG 15s ease infinite;
       color: #444;
-      overflow: hidden;
+    }
+
+    @keyframes gradientBG {
+      0% { background: #ffd6e8; }
+      25% { background: #fcd5f2; }
+      50% { background: #fce7f3; }
+      75% { background: #ffe4f0; }
+      100% { background: #ffd6e8; }
     }
 
     .card {
       background: white;
-      padding: 30px;
+      padding: 25px;
       border-radius: 20px;
       max-width: 360px;
       text-align: center;
@@ -44,9 +37,9 @@
     }
 
     h1 {
+      color: #e11d48;
       font-size: 26px;
       margin-bottom: 10px;
-      color: #e11d48;
     }
 
     p {
@@ -69,85 +62,85 @@
 
     button:hover {
       background: #be123c;
+      transform: scale(1.05);
     }
 
     .hidden {
       display: none;
       margin-top: 15px;
-      color: #be123c;
       font-weight: 500;
+      color: #e11d48;
     }
 
-    .heart {
+    .heart, .sparkle {
       position: fixed;
       bottom: -10px;
       font-size: 20px;
-      animation: float 6s linear infinite;
+      animation: floatUp linear infinite;
       opacity: 0.7;
     }
 
-    @keyframes float {
+    @keyframes floatUp {
       0% { transform: translateY(0); opacity: 0.7; }
       100% { transform: translateY(-100vh); opacity: 0; }
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: scale(0.9); }
-      to { opacity: 1; transform: scale(1); }
-    }
+    @keyframes fadeIn { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
+
+    .story-line { opacity: 0; transition: opacity 1s ease; }
   </style>
 </head>
-
 <body>
 
-  <div class="card">
-    <h1>Rahini Arora 🤍</h1>
+<div class="card">
+  <h1>Rahini Arora 🤍</h1>
 
-    <p>
-      You’re already my girlfriend,  
-      but I still wanted to do something special.
-    </p>
+  <p class="story-line" id="line1">You’re already my girlfriend…</p>
+  <p class="story-line" id="line2">But I still wanted to do something special for you 💖</p>
+  <p class="story-line" id="line3">This page is my little way to show how much you mean to me 🌸</p>
 
-    <p>
-      This page is just a small reminder  
-      of how much you mean to me.
-    </p>
+  <button onclick="showLove()">Only for you 🤍</button>
 
-    <p>
-      Thank you for being you,  
-      and for being mine.
-    </p>
-
-    <p><strong>— Tanmay 💗</strong></p>
-
-    <button onclick="showLove()">Tap for surprise 💕</button>
-
-    <div id="loveText" class="hidden">
-      I choose you. Every day. Always. 🤍
-    </div>
+  <div id="loveText" class="hidden">
+    I choose you. Every day. Always. 💗
+    <p>— Tanmay</p>
   </div>
+</div>
 
-  <!-- Floating hearts -->
-  <script>
-    function showLove() {
-      document.getElementById("loveText").style.display = "block";
-    }
+<!-- Floating hearts & sparkles -->
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+<script>
+  // Floating hearts and sparkles
+  function createHeartOrSparkle() {
+    const el = document.createElement("div");
+    const emojis = ["💖","💕","💗","🤍","🌸","✨","⭐"];
+    el.innerHTML = emojis[Math.floor(Math.random()*emojis.length)];
+    el.className = Math.random() < 0.7 ? "heart" : "sparkle";
+    el.style.left = Math.random() * 100 + "vw";
+    el.style.animationDuration = (4 + Math.random() * 3) + "s";
+    document.body.appendChild(el);
+    setTimeout(() => el.remove(), 7000);
+  }
+  setInterval(createHeartOrSparkle, 400);
 
-    function createHeart() {
-      const heart = document.createElement("div");
-      heart.classList.add("heart");
-      heart.innerHTML = ["💖","💕","💗","🤍","🌸"][Math.floor(Math.random()*5)];
-      heart.style.left = Math.random() * 100 + "vw";
-      heart.style.animationDuration = (4 + Math.random() * 3) + "s";
-      document.body.appendChild(heart);
+  // Confetti on button click
+  function showLove() {
+    document.getElementById("loveText").style.display = "block";
+    confetti({
+      particleCount: 120,
+      spread: 80,
+      origin: { y: 0.6 },
+      colors: ['#e11d48', '#f472b6', '#fbcfe8', '#ff49b6', '#ffe4f0']
+    });
+  }
 
-      setTimeout(() => {
-        heart.remove();
-      }, 7000);
-    }
-
-    setInterval(createHeart, 400);
-  </script>
-
+  // Story lines animation
+  const lines = ["line1","line2","line3"];
+  let delay = 500;
+  lines.forEach(id => {
+    setTimeout(() => { document.getElementById(id).style.opacity = 1; }, delay);
+    delay += 1800;
+  });
+</script>
 </body>
 </html>
