@@ -1,0 +1,133 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>For Rahini 💖</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #ffd6e8, #fff);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      color: #444;
+    }
+    .card {
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      max-width: 420px;
+      width: 90%;
+      text-align: center;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+    h1 {
+      color: #ff5fa2;
+    }
+    p {
+      font-size: 16px;
+      line-height: 1.6;
+      margin: 15px 0;
+    }
+    .heart {
+      font-size: 30px;
+      animation: pulse 1.5s infinite;
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+      100% { transform: scale(1); }
+    }
+    button {
+      margin: 10px;
+      padding: 12px 22px;
+      border: none;
+      border-radius: 30px;
+      font-size: 16px;
+      cursor: pointer;
+      background: #ff5fa2;
+      color: white;
+      transition: 0.3s;
+    }
+    button:hover {
+      background: #e94c8d;
+    }
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card" id="page1">
+    <h1>Hey Rahini 💕</h1>
+    <p>
+      This little page is something I made just for you.
+      It’s simple… but it comes straight from my heart.
+    </p>
+    <div class="heart">💖</div>
+    <button onclick="nextPage()">Next</button>
+  </div>
+
+  <div class="card hidden" id="page2">
+    <p>
+      We started talking like any normal conversation…
+      but slowly, you became the part of my day I look forward to the most.
+    </p>
+    <p>
+      Your presence feels warm, calm, and special in ways I can’t fully explain.
+    </p>
+    <button onclick="nextPage()">Next</button>
+  </div>
+
+  <div class="card hidden" id="page3">
+    <p>
+      I don’t want to rush things or make big promises.
+    </p>
+    <p>
+      I just know this —
+      I like you, I care about you,
+      and I want to choose you.
+    </p>
+    <button onclick="nextPage()">Next</button>
+  </div>
+
+  <div class="card hidden" id="page4">
+    <h1>So Rahini… 💌</h1>
+    <p style="font-size:18px;">
+      Will you be my girlfriend?
+    </p>
+    <button onclick="yes()">YES ❤️</button>
+    <button onclick="yes()">DEFINITELY YES 💖</button>
+  </div>
+
+  <div class="card hidden" id="page5">
+    <h1>Thank You 🥹💗</h1>
+    <p>
+      This is me choosing you,
+      with honesty, respect, and a lot of care.
+    </p>
+    <p>
+      — Tanmay
+    </p>
+  </div>
+
+<script>
+  let current = 1;
+  function nextPage() {
+    document.getElementById("page" + current).classList.add("hidden");
+    current++;
+    document.getElementById("page" + current).classList.remove("hidden");
+  }
+  function yes() {
+    document.getElementById("page4").classList.add("hidden");
+    document.getElementById("page5").classList.remove("hidden");
+  }
+</script>
+
+</body>
+</html>
