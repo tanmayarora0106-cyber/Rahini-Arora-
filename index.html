@@ -1,133 +1,138 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>For Rahini Arora 🫶🏻</title>
+  <title>For Rahini Arora 🤍</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <style>
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(135deg, #ffd6e8, #fff);
+      background: linear-gradient(135deg, #fff1f4, #fce7f3);
       display: flex;
       justify-content: center;
       align-items: center;
       min-height: 100vh;
       color: #444;
+      overflow: hidden;
     }
+
     .card {
       background: white;
       padding: 30px;
       border-radius: 20px;
-      max-width: 420px;
-      width: 90%;
+      max-width: 360px;
       text-align: center;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      animation: fadeIn 1.5s ease;
     }
+
     h1 {
-      color: #ff5fa2;
+      font-size: 26px;
+      margin-bottom: 10px;
+      color: #e11d48;
     }
+
     p {
-      font-size: 16px;
+      font-size: 15px;
       line-height: 1.6;
-      margin: 15px 0;
+      margin: 12px 0;
     }
-    .heart {
-      font-size: 30px;
-      animation: pulse 1.5s infinite;
-    }
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.2); }
-      100% { transform: scale(1); }
-    }
+
     button {
-      margin: 10px;
-      padding: 12px 22px;
+      margin-top: 15px;
+      padding: 10px 20px;
       border: none;
-      border-radius: 30px;
-      font-size: 16px;
-      cursor: pointer;
-      background: #ff5fa2;
+      border-radius: 20px;
+      background: #e11d48;
       color: white;
+      font-size: 14px;
+      cursor: pointer;
       transition: 0.3s;
     }
+
     button:hover {
-      background: #e94c8d;
+      background: #be123c;
     }
+
     .hidden {
       display: none;
+      margin-top: 15px;
+      color: #be123c;
+      font-weight: 500;
+    }
+
+    .heart {
+      position: fixed;
+      bottom: -10px;
+      font-size: 20px;
+      animation: float 6s linear infinite;
+      opacity: 0.7;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0); opacity: 0.7; }
+      100% { transform: translateY(-100vh); opacity: 0; }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
     }
   </style>
 </head>
+
 <body>
 
-  <div class="card" id="page1">
-    <h1>Hey Rahini Arora 🫶🏻</h1>
+  <div class="card">
+    <h1>Rahini Arora 🤍</h1>
+
     <p>
-      This little page is something I made just for you.
-      It’s simple… but it comes straight from my heart.
+      You’re already my girlfriend,  
+      but I still wanted to do something special.
     </p>
-    <div class="heart">💖</div>
-    <button onclick="nextPage()">Next</button>
+
+    <p>
+      This page is just a small reminder  
+      of how much you mean to me.
+    </p>
+
+    <p>
+      Thank you for being you,  
+      and for being mine.
+    </p>
+
+    <p><strong>— Tanmay 💗</strong></p>
+
+    <button onclick="showLove()">Tap for surprise 💕</button>
+
+    <div id="loveText" class="hidden">
+      I choose you. Every day. Always. 🤍
+    </div>
   </div>
 
-  <div class="card hidden" id="page2">
-    <p>
-      We started talking like any normal conversation…
-      but slowly, you became the part of my day I look forward to the most.
-    </p>
-    <p>
-      Your presence feels warm, calm, and special in ways I can’t fully explain.
-    </p>
-    <button onclick="nextPage()">Next</button>
-  </div>
+  <!-- Floating hearts -->
+  <script>
+    function showLove() {
+      document.getElementById("loveText").style.display = "block";
+    }
 
-  <div class="card hidden" id="page3">
-    <p>
-      I don’t want to rush things or make big promises.
-    </p>
-    <p>
-      I just know this —
-      I like you, I care about you,
-      and I want to choose you.
-    </p>
-    <button onclick="nextPage()">Next</button>
-  </div>
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.innerHTML = ["💖","💕","💗","🤍","🌸"][Math.floor(Math.random()*5)];
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = (4 + Math.random() * 3) + "s";
+      document.body.appendChild(heart);
 
-  <div class="card hidden" id="page4">
-    <h1>So Rahini… 💌</h1>
-    <p style="font-size:18px;">
-      Will you be my girlfriend?
-    </p>
-    <button onclick="yes()">YES ❤️</button>
-    <button onclick="yes()">DEFINITELY YES 💖</button>
-  </div>
+      setTimeout(() => {
+        heart.remove();
+      }, 7000);
+    }
 
-  <div class="card hidden" id="page5">
-    <h1>Thank You 🥹💗</h1>
-    <p>
-      This is me choosing you,
-      with honesty, respect, and a lot of care.
-    </p>
-    <p>
-      — Tanmay
-    </p>
-  </div>
-
-<script>
-  let current = 1;
-  function nextPage() {
-    document.getElementById("page" + current).classList.add("hidden");
-    current++;
-    document.getElementById("page" + current).classList.remove("hidden");
-  }
-  function yes() {
-    document.getElementById("page4").classList.add("hidden");
-    document.getElementById("page5").classList.remove("hidden");
-  }
-</script>
+    setInterval(createHeart, 400);
+  </script>
 
 </body>
 </html>
