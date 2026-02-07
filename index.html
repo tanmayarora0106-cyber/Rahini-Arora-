@@ -110,7 +110,6 @@
 <!-- Floating hearts & sparkles -->
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 <script>
-  // Floating hearts and sparkles
   function createHeartOrSparkle() {
     const el = document.createElement("div");
     const emojis = ["💖","💕","💗","🤍","🌸","✨","⭐"];
@@ -123,7 +122,6 @@
   }
   setInterval(createHeartOrSparkle, 400);
 
-  // Confetti on button click
   function showLove() {
     document.getElementById("loveText").style.display = "block";
     confetti({
@@ -134,7 +132,6 @@
     });
   }
 
-  // Story lines animation
   const lines = ["line1","line2","line3"];
   let delay = 500;
   lines.forEach(id => {
@@ -143,4 +140,4 @@
   });
 </script>
 </body>
-</html>
+  </html>
