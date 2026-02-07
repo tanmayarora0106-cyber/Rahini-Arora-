@@ -75,16 +75,18 @@
 
   <!-- Step 2: long love paragraph -->
   <div id="step2" class="hidden">
-    <p>
-      Hey baby, I just want you to know that you make me so happy every day. ❤️<br>
-      Your smile, your laugh, your hugs — everything about you is special to me. 🌸<br>
-      I love spending time with you, talking with you, and just being with you. 💕<br>
-      You make my life better and my heart feel full. 💖<br>
-      I think about you all the time and I always want to make you feel loved. 💌<br>
-      I am so lucky to have you and I will always try my best to make you happy. 🌷<br>
-      You are my favorite person, my best friend, and my special one. 💗<br>
-      I love you more than I can ever say, and I will always choose you. ❤️
-    </p>
+    <div id="loveParagraph">
+      <p>
+        Hey baby, I just want you to know that you make me so happy every day. ❤️<br>
+        Your smile, your laugh, your hugs — everything about you is special to me. 🌸<br>
+        I love spending time with you, talking with you, and just being with you. 💕<br>
+        You make my life better and my heart feel full. 💖<br>
+        I think about you all the time and I always want to make you feel loved. 💌<br>
+        I am so lucky to have you and I will always try my best to make you happy. 🌷<br>
+        You are my favorite person, my best friend, and my special one. 💗<br>
+        I love you more than I can ever say, and I will always choose you. ❤️
+      </p>
+    </div>
     <button id="rewardBtn">Take your reward 💋</button>
   </div>
 
@@ -109,7 +111,7 @@
 
   step1Btn.addEventListener("click", () => {
     step1Btn.style.display = "none";
-    step2.style.display = "block";
+    step2.style.display = "block"; // paragraph + button show together
     confetti({
       particleCount: 100,
       spread: 80,
@@ -170,4 +172,4 @@
 </script>
 
 </body>
-</html>
+  </html>
