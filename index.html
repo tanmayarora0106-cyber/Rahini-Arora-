@@ -6,6 +6,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+<script>
+  function showLove() {
+    // Show the hidden love text
+    document.getElementById("loveText").style.display = "block";
+    
+    // Launch confetti
+    confetti({
+      particleCount: 100,
+      spread: 70,
+      origin: { y: 0.6 },
+      colors: ['#e11d48', '#f472b6', '#fbcfe8', '#ff49b6', '#ffe4f0']
+    });
+  }
+</script>
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
