@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>For Rahini Arora 🤍</title>
+  <title>For Rahini Arora ❤️</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
@@ -34,20 +34,12 @@
       text-align: center;
       box-shadow: 0 10px 30px rgba(0,0,0,0.1);
       animation: fadeIn 1.5s ease;
+      z-index: 10;
+      position: relative;
     }
 
-    h1 {
-      color: #e11d48;
-      font-size: 26px;
-      margin-bottom: 10px;
-    }
-
-    p {
-      font-size: 15px;
-      line-height: 1.6;
-      margin: 12px 0;
-    }
-
+    h1 { color: #e11d48; font-size: 26px; margin-bottom: 10px; }
+    p { font-size: 15px; line-height: 1.6; margin: 12px 0; }
     button {
       margin-top: 15px;
       padding: 10px 20px;
@@ -59,85 +51,123 @@
       cursor: pointer;
       transition: 0.3s;
     }
+    button:hover { background: #be123c; transform: scale(1.05); }
 
-    button:hover {
-      background: #be123c;
-      transform: scale(1.05);
-    }
-
-    .hidden {
-      display: none;
-      margin-top: 15px;
-      font-weight: 500;
-      color: #e11d48;
-    }
-
-    .heart, .sparkle {
-      position: fixed;
-      bottom: -10px;
-      font-size: 20px;
-      animation: floatUp linear infinite;
-      opacity: 0.7;
-    }
-
-    @keyframes floatUp {
-      0% { transform: translateY(0); opacity: 0.7; }
-      100% { transform: translateY(-100vh); opacity: 0; }
-    }
-
-    @keyframes fadeIn { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
-
+    .hidden { display: none; margin-top: 15px; font-weight: 500; color: #e11d48; }
     .story-line { opacity: 0; transition: opacity 1s ease; }
+
+    /* Floating emojis */
+    .emoji { position: fixed; z-index: 5; pointer-events: none; }
   </style>
 </head>
 <body>
 
 <div class="card">
-  <h1>Rahini Arora 🤍</h1>
+  <h1>Rahini Arora ❤️</h1>
 
+  <!-- Animated story lines -->
   <p class="story-line" id="line1">You’re already my girlfriend…</p>
   <p class="story-line" id="line2">But I still wanted to do something special for you 💖</p>
   <p class="story-line" id="line3">This page is my little way to show how much you mean to me 🌸</p>
 
-  <button onclick="showLove()">Only for you 🤍</button>
+  <!-- Step 1 button -->
+  <button id="step1Btn">Only for you ❤️</button>
 
-  <div id="loveText" class="hidden">
-    I choose you. Every day. Always. 💗
-    <p>— Tanmay</p>
+  <!-- Step 2: long love paragraph -->
+  <div id="step2" class="hidden">
+    <p>
+      Hey baby, I just want you to know that you make me so happy every day. ❤️<br>
+      Your smile, your laugh, your hugs — everything about you is special to me. 🌸<br>
+      I love spending time with you, talking with you, and just being with you. 💕<br>
+      You make my life better and my heart feel full. 💖<br>
+      I think about you all the time and I always want to make you feel loved. 💌<br>
+      I am so lucky to have you and I will always try my best to make you happy. 🌷<br>
+      You are my favorite person, my best friend, and my special one. 💗<br>
+      I love you more than I can ever say, and I will always choose you. ❤️
+    </p>
+    <button id="rewardBtn">Take your reward 💋</button>
   </div>
+
+  <!-- Step 3: kisses container -->
+  <div id="kissesContainer"></div>
 </div>
 
-<!-- Floating hearts & sparkles -->
+<!-- Scripts -->
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 <script>
-  function createHeartOrSparkle() {
-    const el = document.createElement("div");
-    const emojis = ["💖","💕","💗","🤍","🌸","✨","⭐"];
-    el.innerHTML = emojis[Math.floor(Math.random()*emojis.length)];
-    el.className = Math.random() < 0.7 ? "heart" : "sparkle";
-    el.style.left = Math.random() * 100 + "vw";
-    el.style.animationDuration = (4 + Math.random() * 3) + "s";
-    document.body.appendChild(el);
-    setTimeout(() => el.remove(), 7000);
-  }
-  setInterval(createHeartOrSparkle, 400);
-
-  function showLove() {
-    document.getElementById("loveText").style.display = "block";
-    confetti({
-      particleCount: 120,
-      spread: 80,
-      origin: { y: 0.6 },
-      colors: ['#e11d48', '#f472b6', '#fbcfe8', '#ff49b6', '#ffe4f0']
-    });
-  }
-
+  // Animate story lines
   const lines = ["line1","line2","line3"];
   let delay = 500;
   lines.forEach(id => {
     setTimeout(() => { document.getElementById(id).style.opacity = 1; }, delay);
     delay += 1800;
   });
+
+  // Step 1 button click
+  const step1Btn = document.getElementById("step1Btn");
+  const step2 = document.getElementById("step2");
+
+  step1Btn.addEventListener("click", () => {
+    step1Btn.style.display = "none";
+    step2.style.display = "block";
+    confetti({
+      particleCount: 100,
+      spread: 80,
+      origin: { y: 0.6 },
+      colors: ['#e11d48','#f472b6','#fbcfe8','#ff49b6','#ffe4f0']
+    });
+  });
+
+  // Step 2 reward button click (falling kisses)
+  const rewardBtn = document.getElementById("rewardBtn");
+  const kissesContainer = document.getElementById("kissesContainer");
+
+  rewardBtn.addEventListener("click", () => {
+    rewardBtn.style.display = "none";
+
+    for(let i=0;i<50;i++){
+      const kiss = document.createElement("div");
+      kiss.innerHTML = "💋";
+      kiss.className = "emoji";
+      kiss.style.top = "-50px";
+      kiss.style.left = Math.random()*100 + "vw";
+      const size = 15 + Math.random()*25;
+      kiss.style.fontSize = size + "px";
+      kiss.style.opacity = 0.3 + Math.random()*0.7;
+      const duration = 8 + Math.random()*5;
+      kiss.style.transition = `transform ${duration}s linear, opacity ${duration}s linear`;
+      kissesContainer.appendChild(kiss);
+      setTimeout(() => {
+        kiss.style.transform = `translateY(${window.innerHeight + 50}px)`;
+        kiss.style.opacity = 0;
+      }, 50);
+      setTimeout(() => kiss.remove(), duration*1000 + 100);
+    }
+  });
+
+  // Falling hearts & flowers
+  function createFallingEmoji() {
+    const el = document.createElement("div");
+    const emojis = ["❤️","💖","💕","💗","🌸","🌷"];
+    el.innerHTML = emojis[Math.floor(Math.random()*emojis.length)];
+    el.className = "emoji";
+    el.style.top = "-50px";
+    el.style.left = Math.random()*100 + "vw";
+    const size = 15 + Math.random()*25;
+    el.style.fontSize = size + "px";
+    el.style.opacity = 0.3 + Math.random()*0.7;
+    const duration = 8 + Math.random()*5;
+    el.style.transition = `transform ${duration}s linear, opacity ${duration}s linear`;
+    document.body.appendChild(el);
+    setTimeout(() => {
+      el.style.transform = `translateY(${window.innerHeight + 50}px)`;
+      el.style.opacity = 0;
+    }, 50);
+    setTimeout(() => el.remove(), duration*1000 + 100);
+  }
+
+  setInterval(createFallingEmoji, 400);
 </script>
+
 </body>
-  </html>
+</html>
